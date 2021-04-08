@@ -11,9 +11,9 @@ namespace Course_Collections_Alura
         static void Main(string[] args)
         {
 
-            string aulaIntro = "Introdução às Coleções";
-            string aulaModelando = "Modelando a Classe Aula";
-            string aulaSets = "Trabalhando com Conjuntos";
+            var aulaIntro = new Aula("Introdução às Coleções", 20);
+            var aulaModelando = new Aula("Modelando a Classe Aula", 18);
+            var aulaSets = new Aula("Trabalhando com Conjuntos", 16);
 
 
             #region Aula 01
@@ -59,78 +59,89 @@ namespace Course_Collections_Alura
             //Imprimir(clone);
             #endregion
 
-            List<string> listaAulas = new List<string>()
-            {
-                aulaIntro, aulaModelando, aulaSets
-            };
+            #region Aula 02 Parte 01
+            //List<string> listaAulas = new List<string>()
+            //{
+            //    aulaIntro, aulaModelando, aulaSets
+            //};
 
-            listaAulas.Add("Lista Genéricas");
+            //listaAulas.Add("Lista Genéricas");
 
 
 
-            ImprimirLista(listaAulas);
+            //ImprimirLista(listaAulas);
 
-            Console.WriteLine($"Primeira aula: {listaAulas.FirstOrDefault()}");
-            Console.WriteLine($"Última aula: {listaAulas.LastOrDefault()}");
+            //Console.WriteLine($"Primeira aula: {listaAulas.FirstOrDefault()}");
+            //Console.WriteLine($"Última aula: {listaAulas.LastOrDefault()}");
 
-            listaAulas[0] = "Trabalhando com Listas";
+            //listaAulas[0] = "Trabalhando com Listas";
 
-            ImprimirLista(listaAulas);
+            //ImprimirLista(listaAulas);
 
-            Console.WriteLine($"\nA primeira aula 'Trabalhando' é: {listaAulas.FirstOrDefault(lista => lista.Contains("Trabalhando"))}");
-            Console.WriteLine($"\nA última aula 'Trabalhando' é: {listaAulas.LastOrDefault(lista => lista.Contains("Trabalhando"))}");
-            Console.WriteLine($"\nA última aula 'Conclusão' é: {listaAulas.LastOrDefault(lista => lista.Contains("Conslusao"))}");
+            //Console.WriteLine($"\nA primeira aula 'Trabalhando' é: {listaAulas.FirstOrDefault(lista => lista.Contains("Trabalhando"))}");
+            //Console.WriteLine($"\nA última aula 'Trabalhando' é: {listaAulas.LastOrDefault(lista => lista.Contains("Trabalhando"))}");
+            //Console.WriteLine($"\nA última aula 'Conclusão' é: {listaAulas.LastOrDefault(lista => lista.Contains("Conslusao"))}");
 
-            listaAulas.Reverse();
-            ImprimirLista(listaAulas);
+            //listaAulas.Reverse();
+            //ImprimirLista(listaAulas);
 
-            listaAulas.Reverse();
-            ImprimirLista(listaAulas);
+            //listaAulas.Reverse();
+            //ImprimirLista(listaAulas);
 
-            listaAulas.Remove(listaAulas.LastOrDefault());
-            ImprimirLista(listaAulas);
+            //listaAulas.Remove(listaAulas.LastOrDefault());
+            //ImprimirLista(listaAulas);
 
-            listaAulas.Add("Conclusao");
-            ImprimirLista(listaAulas);
+            //listaAulas.Add("Conclusao");
+            //ImprimirLista(listaAulas);
+
+            //listaAulas.Sort();
+            //ImprimirLista(listaAulas);
+
+            //List<string> listaCopia = listaAulas.GetRange(listaAulas.Count - 2, 2);
+            //ImprimirLista(listaCopia);
+
+            //List<string> listaClone = new List<string>(listaAulas);
+            //ImprimirLista(listaClone);
+
+            //listaClone.RemoveRange(listaClone.Count - 2, 2);
+            //ImprimirLista(listaClone);
+            #endregion
+
+            List<Aula> listaAulas = new List<Aula>();
+
+            listaAulas.Add(aulaIntro);
+            listaAulas.Add(aulaModelando);
+            listaAulas.Add(aulaSets);
+            listaAulas.Add(new Aula("Conclusão", 10));
+
+            Imprimir(listaAulas);
 
             listaAulas.Sort();
-            ImprimirLista(listaAulas);
 
-            List<string> listaCopia = listaAulas.GetRange(listaAulas.Count-2, 2);
-            ImprimirLista(listaCopia);
+            Imprimir(listaAulas);
 
-            List<string> listaClone = new List<string>(listaAulas);
-            ImprimirLista(listaClone);
+            listaAulas.Sort((a, b) => a.Tempo.CompareTo(b.Tempo));
 
-            listaClone.RemoveRange(listaClone.Count - 2, 2);
-            ImprimirLista(listaClone);
+            Imprimir(listaAulas);
 
             Console.ReadKey();
-        }
 
-        private static void ImprimirLista(List<string> lista)
-        {
-            //foreach (var item in lista)
-            //{
-            //    Console.WriteLine(item);
-            //}
-
-            Console.WriteLine();
-            lista.ForEach(aula =>
-            {
-                Console.WriteLine($"{aula}");
-            });
-            Console.WriteLine();
             
         }
 
-        private static void ImprimirString(string[] aulas)
+        private static void Imprimir(List<Aula> listaAulas)
         {
-            foreach (var item in aulas)
+            Console.Clear();
+
+            foreach (var aula in listaAulas)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(aula);
             }
-            Console.WriteLine();
         }
+
+       
+
     }
+
+    
 }
