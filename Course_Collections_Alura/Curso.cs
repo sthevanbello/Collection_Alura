@@ -10,6 +10,16 @@ namespace Course_Collections_Alura
     class Curso
     {
         private IList<Aula> aulas;
+        private ISet<Aluno> alunos = new HashSet<Aluno>();
+
+        public IList<Aluno> Alunos
+        {
+            get
+            {
+                return new ReadOnlyCollection<Aluno>(alunos.ToList());
+            }
+
+        }
 
         public IList<Aula> Aulas
         {
@@ -40,6 +50,7 @@ namespace Course_Collections_Alura
             _nome = nome;
             _instrutor = instrutor;
             aulas = new List<Aula>();
+            
         }
 
         public void InserirAula(Aula aula)
@@ -83,5 +94,24 @@ namespace Course_Collections_Alura
             return $"{sb}";
 
         }
+
+        internal void Matricula(Aluno aluno)
+        {
+            alunos.Add(aluno);
+        }
+
+        public bool EstaMatriculado(Aluno aluno)
+        {
+            foreach (var item in alunos)
+            {
+                if (item.Equals(aluno))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        
     }
 }

@@ -11,9 +11,9 @@ namespace Course_Collections_Alura
         static void Main(string[] args)
         {
 
-            var aulaIntro = new Aula("Introdução às Coleções", 20);
-            var aulaModelando = new Aula("Modelando a Classe Aula", 18);
-            var aulaSets = new Aula("Trabalhando com Conjuntos", 16);
+            //var aulaIntro = new Aula("Introdução às Coleções", 20);
+            //var aulaModelando = new Aula("Modelando a Classe Aula", 18);
+            //var aulaSets = new Aula("Trabalhando com Conjuntos", 16);
 
 
             #region Aula 01
@@ -126,38 +126,100 @@ namespace Course_Collections_Alura
             //Imprimir(listaAulas);
             #endregion
 
-            Curso cursos = new Curso(nome: "C# Collection", instrutor: "Marcelo Oliveira");
+            #region Aula 02 Parte 03
+            //Curso cursos = new Curso(nome: "C# Collection", instrutor: "Marcelo Oliveira");
 
-            cursos.InserirAula(new Aula(titulo: "Trabalhando com listas", 21));
-
-
-            //Adding two new classes
-
-            cursos.InserirAula(new Aula(titulo: "Criando uma aula", tempo: 20));
-            cursos.InserirAula(new Aula(titulo: "Modelando com coleções", tempo: 19));
+            //cursos.InserirAula(new Aula(titulo: "Trabalhando com listas", 21));
 
 
-            //Order
+            ////Adding two new classes
 
-            List<Aula> aulasCopy = new List<Aula>(cursos.Aulas);
+            //cursos.InserirAula(new Aula(titulo: "Criando uma aula", tempo: 20));
+            //cursos.InserirAula(new Aula(titulo: "Modelando com coleções", tempo: 19));
 
-            aulasCopy.Sort();
 
-            //Imprimir(aulasCopy);
+            ////Order
 
-            //Time total of course
+            //List<Aula> aulasCopy = new List<Aula>(cursos.Aulas);
 
-            //Console.WriteLine($"Tempo total em minutos: {cursos.TempoTotal()}");
+            //aulasCopy.Sort();
 
-            
-            //Imprimir(aulasCopy);
+            ////Imprimir(aulasCopy);
 
-            Console.WriteLine(cursos);
+            ////Time total of course
+
+            ////Console.WriteLine($"Tempo total em minutos: {cursos.TempoTotal()}");
+
+
+            ////Imprimir(aulasCopy);
+
+            //Console.WriteLine(cursos);
+            #endregion
+
+            #region Aula 03 Parte 01
+            //ISet<string> alunos = new HashSet<string>();
+            //alunos.Add("Vanessa Tonini");
+            //alunos.Add("Ana Losnak");
+            //alunos.Add("Rafael Nercessian");
+
+            //Console.WriteLine(string.Join("\n", alunos));
+
+            //alunos.Add("Priscila Stuani");
+            //alunos.Add("Rafael Rollo");
+            //alunos.Add("Fabio Gushiken");
+
+            //alunos.Remove("Ana Losnak");
+            //alunos.Add("Marcelo Oliveira");
+
+            //Console.WriteLine(string.Join("\n", alunos));
+            //alunos.Add("Fabio Gushiken");
+            //Console.WriteLine(string.Join("\n", alunos));
+
+            //List<string> lista = new List<string>(alunos);
+
+            //lista.Sort();
+            //Console.WriteLine("=========================");
+            //Console.WriteLine("\tOrdenados");
+            //Console.WriteLine(string.Join("\n", lista));
+            #endregion
+
+            Curso csharpCollections = new Curso(nome: "C# Collections", instrutor: "Marcelo Oliveira");
+
+            csharpCollections.InserirAula(new Aula(titulo: "Trabalhando com listas", 21));
+            csharpCollections.InserirAula(new Aula(titulo: "Crianda uma Aula", 20));
+            csharpCollections.InserirAula(new Aula(titulo: "Modelando com coleções", 24));
+
+            Aluno a1 = new Aluno("Vanessa Tonini", 34672);
+            Aluno a2 = new Aluno("Ana Losnak", 5617);
+            Aluno a3 = new Aluno("Rafael Nercessian", 17645);
+
+            csharpCollections.Matricula(a1);
+            csharpCollections.Matricula(a2);
+            csharpCollections.Matricula(a3);
+
+            ImprimirAluno(csharpCollections);
+
+            Console.WriteLine($"O aluno {a1.Nome} está matriculado?");
+
+            Console.WriteLine(csharpCollections.EstaMatriculado(a1));
+
+
+            Aluno tonini = new Aluno("Vanessa Tonini", 34672);
+
+            Console.WriteLine("Tonini está matriculada? " + csharpCollections.EstaMatriculado(tonini));
+            Console.WriteLine("Tonini está matriculada? " + csharpCollections.EstaMatriculado(tonini));
+            Console.WriteLine(a1 == tonini);
+            Console.WriteLine(a1.Equals(tonini));
 
             Console.ReadKey();
-            
         }
-
+        private static void ImprimirAluno(Curso csharpCollections)
+        {
+            foreach (var item in csharpCollections.Alunos)
+            {
+                Console.WriteLine(item);
+            }
+        }
         private static void Imprimir(IList<Aula> listaAulas)
         {
             Console.Clear();
@@ -167,10 +229,5 @@ namespace Course_Collections_Alura
                 Console.WriteLine(aula);
             }
         }
-
-       
-
     }
-
-    
 }
