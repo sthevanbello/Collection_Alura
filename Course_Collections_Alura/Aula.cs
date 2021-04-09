@@ -21,7 +21,7 @@ namespace Course_Collections_Alura
 
         public override string ToString()
         {
-            return $"Título da aula: {Titulo}\nTempo da aula: {Tempo}";
+            return $"Título da aula: {Titulo} - Tempo da aula: {Tempo} minutos";
         }
 
         public int CompareTo(object obj)

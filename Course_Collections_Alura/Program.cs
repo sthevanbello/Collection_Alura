@@ -107,29 +107,58 @@ namespace Course_Collections_Alura
             //ImprimirLista(listaClone);
             #endregion
 
-            List<Aula> listaAulas = new List<Aula>();
+            #region Aula 02 Parte 02
+            //List<Aula> listaAulas = new List<Aula>();
 
-            listaAulas.Add(aulaIntro);
-            listaAulas.Add(aulaModelando);
-            listaAulas.Add(aulaSets);
-            listaAulas.Add(new Aula("Conclusão", 10));
+            //listaAulas.Add(aulaIntro);
+            //listaAulas.Add(aulaModelando);
+            //listaAulas.Add(aulaSets);
+            //listaAulas.Add(new Aula("Conclusão", 10));
 
-            Imprimir(listaAulas);
+            //Imprimir(listaAulas);
 
-            listaAulas.Sort();
+            //listaAulas.Sort();
 
-            Imprimir(listaAulas);
+            //Imprimir(listaAulas);
 
-            listaAulas.Sort((a, b) => a.Tempo.CompareTo(b.Tempo));
+            //listaAulas.Sort((a, b) => a.Tempo.CompareTo(b.Tempo));
 
-            Imprimir(listaAulas);
+            //Imprimir(listaAulas);
+            #endregion
+
+            Curso cursos = new Curso(nome: "C# Collection", instrutor: "Marcelo Oliveira");
+
+            cursos.InserirAula(new Aula(titulo: "Trabalhando com listas", 21));
+
+
+            //Adding two new classes
+
+            cursos.InserirAula(new Aula(titulo: "Criando uma aula", tempo: 20));
+            cursos.InserirAula(new Aula(titulo: "Modelando com coleções", tempo: 19));
+
+
+            //Order
+
+            List<Aula> aulasCopy = new List<Aula>(cursos.Aulas);
+
+            aulasCopy.Sort();
+
+            //Imprimir(aulasCopy);
+
+            //Time total of course
+
+            //Console.WriteLine($"Tempo total em minutos: {cursos.TempoTotal()}");
+
+            
+            //Imprimir(aulasCopy);
+
+            Console.WriteLine(cursos);
 
             Console.ReadKey();
-
             
         }
 
-        private static void Imprimir(List<Aula> listaAulas)
+        private static void Imprimir(IList<Aula> listaAulas)
         {
             Console.Clear();
 
