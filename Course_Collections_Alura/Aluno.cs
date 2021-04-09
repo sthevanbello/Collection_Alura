@@ -26,7 +26,7 @@
 
         public override string ToString()
         {
-            return $"Nome do aluno(a) -    {Nome}\tMatrícula: {NumeroMatricula}";
+            return $"Nome do(a) aluno(a) -    {Nome}\tMatrícula: {NumeroMatricula}";
         }
 
         public override bool Equals(object obj)

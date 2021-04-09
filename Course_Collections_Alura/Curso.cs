@@ -11,6 +11,7 @@ namespace Course_Collections_Alura
     {
         private IList<Aula> aulas;
         private ISet<Aluno> alunos = new HashSet<Aluno>();
+        private IDictionary<int, Aluno> alunosDictionary = new Dictionary<int, Aluno>();
 
         public IList<Aluno> Alunos
         {
@@ -18,7 +19,6 @@ namespace Course_Collections_Alura
             {
                 return new ReadOnlyCollection<Aluno>(alunos.ToList());
             }
-
         }
 
         public IList<Aula> Aulas
@@ -98,6 +98,7 @@ namespace Course_Collections_Alura
         internal void Matricula(Aluno aluno)
         {
             alunos.Add(aluno);
+            alunosDictionary.Add(aluno.NumeroMatricula, aluno);
         }
 
         public bool EstaMatriculado(Aluno aluno)
@@ -112,6 +113,23 @@ namespace Course_Collections_Alura
             return false;
         }
 
-        
+        internal Aluno BuscaMatriculado(int numeroNatricula)
+        {
+            //var aluno =  alunos.Where(a => a.NumeroMatricula == numeroNatricula).FirstOrDefault();
+            //if (aluno == null)
+            //{
+            //    throw new Exception("Student not found");
+            //}
+            //return aluno;
+            Aluno aluno = null;
+            alunosDictionary.TryGetValue(numeroNatricula, out aluno);
+
+            return aluno;
+        }
+
+        internal void SubstuiAluno(Aluno aluno)
+        {
+            alunosDictionary[aluno.NumeroMatricula] = aluno;
+        }
     }
 }

@@ -183,6 +183,7 @@ namespace Course_Collections_Alura
             //Console.WriteLine(string.Join("\n", lista));
             #endregion
 
+            #region Aula 03 Parte 02
             Curso csharpCollections = new Curso(nome: "C# Collections", instrutor: "Marcelo Oliveira");
 
             csharpCollections.InserirAula(new Aula(titulo: "Trabalhando com listas", 21));
@@ -210,6 +211,30 @@ namespace Course_Collections_Alura
             Console.WriteLine("Tonini está matriculada? " + csharpCollections.EstaMatriculado(tonini));
             Console.WriteLine(a1 == tonini);
             Console.WriteLine(a1.Equals(tonini));
+            #endregion
+
+            #region Aula 04 Parte 01
+
+            Console.Clear();
+            try
+            {
+                Aluno aluno5617 = csharpCollections.BuscaMatriculado(5617);
+                Console.WriteLine($"Aluno(a) 5617: {aluno5617}");
+                Aluno aluno5618 = csharpCollections.BuscaMatriculado(5618);
+                Console.WriteLine($"Aluno(a) 5618: {aluno5618}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            var fabio = new Aluno(nome: "Fabio Gushiken", matricula: 5617);
+            //csharpCollections.Matricula(new Aluno(nome: "Fabio Gushiken", matricula: 5617));
+
+            csharpCollections.SubstuiAluno(fabio);
+
+            Console.WriteLine(csharpCollections.BuscaMatriculado(5617));
+
+            #endregion
 
             Console.ReadKey();
         }
